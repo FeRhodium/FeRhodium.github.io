@@ -142,6 +142,140 @@
           <div class="content index posts-expand">
             
     
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://ferh.me/en/Calculus_I_W1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Henry Chen">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Fe Here">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/en/Calculus_I_W1/" class="post-title-link" itemprop="url">Calculus I Week 1 Note (Delivered by Prof. Xuefeng WANG)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2024-09-03 12:42:50 / Modified: 12:43:56" itemprop="dateCreated datePublished" datetime="2024-09-03T12:42:50+08:00">2024-09-03</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Best way to learn math:</p>
+<ol>
+<li>Background and motivation</li>
+<li>Physical and geometric intuition</li>
+<li>maths Derirations&#x2F;Calculation&#x2F;Proofs</li>
+<li>applications</li>
+</ol>
+<h2 id="Limit-and-Continuity"><a href="#Limit-and-Continuity" class="headerlink" title="Limit and Continuity"></a>Limit and Continuity</h2><p>very rough Def: $f(x)$ has a limit $L$ as $x$ tends to $c$, if $f(x)$ tends to $L$ as $x$ tends to $c$. We write $\lim_{x\to c} f(x)&#x3D;L$</p>
+<p>Ex 1: $f(x)&#x3D;2024x+916$, $\lim_{x\to 0}f(x)&#x3D;916$</p>
+<p>Ex 2: $\lim_{x\to 0}\dfrac{2024x+916}{215+x^2}&#x3D;\dfrac{916}{215}$</p>
+<h3 id="Motivation-Why-limit"><a href="#Motivation-Why-limit" class="headerlink" title="Motivation: Why limit?"></a>Motivation: Why limit?</h3><ol>
+<li><p>Instantaneous speed of moving object</p>
+<ul>
+<li>object moving on the y-axis positive direction, whose position fuc is $y &#x3D; s(t)$, where $t$ in sec, $s(t)$ in meters<ul>
+<li><p>$s(t)&#x3D;t^2$, get the instantaneous speed $v(t)$ at $t&#x3D;1$</p>
+<p>  Idea: consider small time interval $[1, 1 + h]$ if $ h &gt; 0$,  $[1 + h, 1]$ if $h &lt; 0$.</p>
+<p>  Average speed in time interval $[1, 1 + h] &#x3D; \dfrac{dis}{time}&#x3D;\dfrac{s(1+h) - s(1)}{h}$</p>
+<p>$v(1)&#x3D;\lim_{h \to 0}\dfrac{s(1 + h) - s(1)}{h} &#x3D; \lim_{h\to 0}\dfrac{(1 + h)^2 - 1^2}{h} &#x3D; \dfrac 00$? it is an indeterminate forms, which is a devil.</p>
+<p>$v(1)&#x3D;\lim_{h \to 0}\dfrac{(1 + h - 1)(1 + h + 1)}h &#x3D; \lim_{h\to 0}2 + h&#x3D;2$</p>
+</li>
+</ul>
+</li>
+</ul>
+<p> instantaneous speed $v(t_0)&#x3D;\lim_{h\to 0}\dfrac{s(t_0 + h) - s(t_0)}h$, the top means change in $y$, the down means change in $t$, which can be written in $\lim_{\Delta t\to 0}\dfrac{\Delta y}{\Delta t}$</p>
+</li>
+<li><p>slope of the tangent line of curves, when tangent means &quot;to touch&quot; in Latin.</p>
+<ul>
+<li><p>T-line at $(0, 0)$ when the curve is $y &#x3D; x^3$, but it cut through?</p>
+</li>
+<li><p>Why care about tangent line?</p>
+<p>it is the best line to approximate a curve, which can be seperated by lots of T-lines.</p>
+</li>
+<li><p>300 BC Euclid: T-line a line s.t. no ther straight lines for falling betweent curve and T-line.</p>
+</li>
+<li><p>Nov 13, 1665 Newton slope $&#x3D;\frac qp$.</p>
+<ul>
+<li>Ex: $y&#x3D;x^2$ T-line at $(1, 1)$, and another point is $(1 + o, 1 + o\cdot\frac pq)$, where $o$ is a tiny amount. so we have $1 + o\cdot\frac pq &#x3D; (1 + o)^2$, which can be solve that $\frac pq &#x3D; 2$, represents the slope at $(1, 1)$</li>
+</ul>
+</li>
+<li><p>Leibnitz: T-line is the line through a pair if <strong>infinitely close</strong> points on curve $&#x3D;\lim_{Q \to P}$ secant line, so the slope of T-line $&#x3D;\lim_{Q\to P}$ slope of secant line.</p>
+<ul>
+<li>$y &#x3D; f(x)$, slope at $P(c, f(c))$, assuming a point $Q(c + h, f(c + h))$, slope $&#x3D;\lim_{h\to 0}\dfrac{f(c + h) - f(c)}h&#x3D;\lim_{\Delta x\to 0}\dfrac{\Delta y}{\Delta x}$</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Let $y &#x3D; f(x)$ be a general function, average rate of change of $f$ over $[x_1, x_2]$ $&#x3D;\dfrac{f(x_2) - f(x_1)}{x_2 - x_1}$, where instantaneous rate of change of $f$ at $x_1$ $&#x3D;\lim_{x_2\to x_1}\dfrac{f(x_2) - f(x_1)}{x_2 - x_1}&#x3D;\lim_{h \to 0}\dfrac{f(x_1 + h) - f(x_1)}{h}$</p>
+</li>
+</ol>
+<h3 id="More-formal-def-of-limits"><a href="#More-formal-def-of-limits" class="headerlink" title="More formal def of limits"></a>More formal def of limits</h3><p>Let $f(x)$ be defined in an open interval containing $c$, possibly not at $c$ itself, which can be truncated neighborhood of $c$. If $f(x)$ is arbitrarily close to the $L$, as close as we wish, as long as $x$ is close but not to equal to $c$ enough, then we say $f$ approaches the limit $L$ as $x\to c$.</p>
+<p>Notation: $\lim_{x\to c}f(x) &#x3D; L$</p>
+<h4 id="Does-lim-x-to-c-f-x-alwats-exists"><a href="#Does-lim-x-to-c-f-x-alwats-exists" class="headerlink" title="Does $\lim_{x\to c} f(x)$ alwats exists?"></a>Does $\lim_{x\to c} f(x)$ alwats exists?</h4><p>Of course not.</p>
+<ol>
+<li>$f(x)&#x3D;\begin{cases} 0 &amp; x &lt; 0\ 1 &amp;x \ge 0\end{cases}$, $\lim_{x\to 0}f(x)$ DNE, since the left and right limit are not equal.</li>
+<li>$f(x)&#x3D;\sin\left(\dfrac 1x\right)$, $\lim_{x\to 0}f(x)$ DNE, which is too crazy. (a graph should be here?)</li>
+<li>$f(x)&#x3D;\dfrac{1}{x^2}$, $\lim_{x\to 0}f(x)$ DNF, which can be inf.</li>
+</ol>
+<h3 id="Limit-laws"><a href="#Limit-laws" class="headerlink" title="Limit laws"></a>Limit laws</h3><p>if $\lim_{x\to c}f(x)$ and $\lim_{x\to c}g(x)$ exist. Then</p>
+<ol>
+<li><p>$\lim_{x\to c}(f(x) + g(x)) &#x3D; \lim_{x\to c}f(x) + \lim_{x\to c}g(x)$</p>
+</li>
+<li><p>suppose $k$ is a constant, $\lim_{x\to c}kf(x) &#x3D; k\lim_{x\to c}f(x)$</p>
+<p> so we have $\lim_{x\to c}(c_1f(x) + c_2g(x)) &#x3D; c_1\lim_{x\to c}f(x) + c_2\lim_{x\to c}g(x)$.</p>
+</li>
+<li><p>$\lim_{x\to c}(f(x)g(x)) &#x3D; \lim_{x\to c}f(x)\lim_{x\to c}g(x)$</p>
+</li>
+<li><p>$\lim_{x\to c}\dfrac{f(x)}{g(x)} &#x3D; \dfrac{\lim_{x\to c}f(x)}{\lim_{x\to c}g(x)}$, when $\lim_{x\to c}g(x)\neq 0$</p>
+</li>
+<li><p>$\lim_{x\to c}f^n(x)&#x3D;\left(\lim_{x\to c}f(x)\right)^n$</p>
+</li>
+</ol>
+<p>Ex: when $f(x)$ is a polynomial function, then $\lim_{x\to c}f(x) &#x3D; f(c)$</p>
+<h2 id="Day-1-End"><a href="#Day-1-End" class="headerlink" title="Day 1 End"></a>Day 1 End</h2><p>Day 2 will be updated soon</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+    
+    
+    
     
     
         
@@ -277,7 +411,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
