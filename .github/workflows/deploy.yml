@@ -13,10 +13,10 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - uses: actions/checkout
+      - uses: actions/setup-node
       - name: Cache node_modules 
-        uses: actions/cache@v2
+        uses: actions/cache
         env:
           cache-name: cache-node-modules
         with:
