@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: 'recursive'
       - name: Setup Node.js
         uses: actions/setup-node@v4
       - name: Cache node_modules 
@@ -39,6 +41,7 @@ jobs:
         run: |
           npm install -g hexo-cli --save
           npm install
+          mv _config_next.yml themes/next/_config.yml
       - name: Convert Source to Static
         run: |
           hexo clean
