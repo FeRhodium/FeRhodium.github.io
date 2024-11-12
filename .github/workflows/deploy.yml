@@ -33,6 +33,7 @@ jobs:
       - name: Install Hexo-cli
         run: |
           npm install -g hexo-cli --save
+          npm install hexo-deployer-git --save
           echo "install hexo successful"
       - name: Build Blog
         run: |
@@ -43,8 +44,8 @@ jobs:
         env:
          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
-          /usr/bin/git config --global user.name "FeRhodium"
-          /usr/bin/git config --global user.email "zhihengchen@link.cuhk.edu.cn"
+          git config --global user.name "FeRhodium"
+          git config --global user.email "zhihengchen@link.cuhk.edu.cn"
           hexo deploy
 
       - run: echo "Deploy Successful!"
