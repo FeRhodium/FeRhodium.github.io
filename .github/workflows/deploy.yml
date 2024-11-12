@@ -46,7 +46,7 @@ jobs:
         run: |
           git config --global user.name "FeRhodium"
           git config --global user.email "zhihengchen@link.cuhk.edu.cn"
-          echo github: https://$ACCESS_TOKEN@github.com/FeRhodium/FeRhodium.github.io.git,master' >> _config.yml
+          echo github: https://$ACCESS_TOKEN@github.com/FeRhodium/FeRhodium.github.io.git,master >> _config.yml
           hexo deploy
 
       - run: echo "Deploy Successful!"
