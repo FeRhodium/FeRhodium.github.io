@@ -3,7 +3,7 @@ title: A Newer Blog
 ---
 这是一个新的博客，取代了[这个](https://old.ferh.me)，其中写于 2022-2024 的文章【数据丢失】喵。
 
-某些文章由于本人不小心丢失，现在采用 [Git 同步](https://github.com/FeRhodium/blog) + Github Action 部署，大概不会出现这个问题。
+某些文章由于本人不小心丢失，现在采用 [Git 同步**源码**](https://github.com/FeRhodium/FeRhodium.github.io) + Github Action 部署，大概不会出现这个问题。
 
 这个博客将会用中~~英双~~文写作 ~~，前者会率先更新~~。
 
