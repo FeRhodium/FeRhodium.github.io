@@ -101,7 +101,6 @@ theme: landscape
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: git
-  repository:
-    github: https://github.com/FeRhodium/FeRhodium.github.io.git
-  branch: main
+  - type: git
+    repository:
+      
