@@ -9,7 +9,7 @@ on:
       - '**/source/**'
 
 jobs:
-  blog: # 任务名称
+  blog:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
@@ -43,8 +43,8 @@ jobs:
         env:
          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: |
-          git config --global user.name "FeRhodium"
-          git config --global user.email "zhihengchen@link.cuhk.edu.cn"
+          /usr/bin/git config --global user.name "FeRhodium"
+          /usr/bin/git config --global user.email "zhihengchen@link.cuhk.edu.cn"
           hexo deploy
 
       - run: echo "Deploy Successful!"
