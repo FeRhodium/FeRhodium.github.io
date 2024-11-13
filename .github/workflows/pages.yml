@@ -40,6 +40,7 @@ jobs:
       - name: Environment Build
         run: |
           npm install -g hexo-cli --save
+          npm install hexo-hide-posts --save
           npm install
           mv _config.next.yml themes/next/_config.yml
       - name: Convert Source to Static
