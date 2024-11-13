@@ -29,13 +29,12 @@ xxx/xxx.github.io
 │		└── yyy.md
 ├── themes
 │	└── zzz(can be a submodule)
-├── _config.zzz.yml
 ├── .gitmodules
 ├── CNAME
 └── some files Hexo needed
 ```
 
-一些 Hexo 必须文件被省略，其中 `_config.zzz.yml` 是可能存在的主题配置文件，`CNAME` 是自定义域名，`pages.yml` 是 Workflows 配置文件。
+一些 Hexo 必须文件被省略，`CNAME` 是自定义域名，`pages.yml` 是 Workflows 配置文件。
 
 与传统配置不同，`CNAME` 须保存在根目录而非 `source` 目录下。
 
@@ -86,7 +85,6 @@ jobs:
         run: |
           npm install -g hexo-cli --save
           npm install
-          mv _config.next.yml themes/next/_config.yml
       - name: Convert Source to Static
         run: |
           hexo clean
@@ -103,6 +101,6 @@ jobs:
         uses: actions/deploy-pages@v4
 ```
 
-此处本人的主题采用了 submodule，则需在 Checkout 时 Pull submodule，且需把配置文件移动到特定主题目录下（即 `Environment Build` 中的 `mv` 命令）；直接 Git Clone 然后直接修改应该也是可以的。
+此处本人的主题采用了 submodule，则需在 Checkout 时 Pull submodule，**主题**配置文件可以直接在根目录下 `_config.yml` 修改；直接 Git Clone 然后直接修改应该也是可以的。
 
 **注意：** 该方法会导致你的源码数据被公开，如果不希望这样做，则可能需要新建一个私有的源码仓库，然后通过 Hexo Push 到 `xxx.github.io` 仓库，此种方式互联网上存在相关方法，这里不再赘述。
