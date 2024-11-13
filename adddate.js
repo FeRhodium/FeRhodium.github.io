@@ -7,7 +7,7 @@ function getCreationTime(filePath) {
   try {
     const command = `git log --diff-filter=A --format="%ai" -- "${filePath}" | tail -n 1`;
     const creationTime = execSync(command).toString().trim();
-    return creationTime;
+    return creationTime.replace(/(\+\d{4}|\-\d{4})$/, '');
   } catch (error) {
     console.error(`Error getting creation time for ${filePath}: ${error.message}`);
     return null;
@@ -19,7 +19,7 @@ function getupdatedTime(filePath) {
   try {
     const command = `git log -1 --format="%ai" -- "${filePath}"`;
     const updatedTime = execSync(command).toString().trim();
-    return updatedTime;
+    return updatedTime.replace(/(\+\d{4}|\-\d{4})$/, '');
   } catch (error) {
     console.error(`Error getting updated time for ${filePath}: ${error.message}`);
     return null;
@@ -72,7 +72,6 @@ function processMarkdownFiles(directory) {
       const filePath = path.join(directory, file);
       if (path.extname(file) === '.md') {
         updateMarkdownFile(filePath);
-        console.log(`Updated: ${filePath}`);
       }
     });
   });
