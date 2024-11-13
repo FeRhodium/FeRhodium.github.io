@@ -41,6 +41,7 @@ jobs:
         run: |
           npm install -g hexo-cli --save
           npm install
+          node adddate.js
           hexo clean
           hexo generate
           hexo deploy
