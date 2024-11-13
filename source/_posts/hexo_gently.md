@@ -35,7 +35,7 @@ xxx/xxx.github.io
 └── some files Hexo needed
 ```
 
-一些 Hexo 必须文件被省略，`CNAME` 是自定义域名，`pages.yml` 是 Workflows 配置文件。
+一些 Hexo 必须文件被省略，`adddate.js` 用于添加文章修改时间，`CNAME` 是自定义域名，`pages.yml` 是 Workflows 配置文件。
 
 与传统配置不同，`CNAME` 须保存在根目录而非 `source` 目录下。
 
