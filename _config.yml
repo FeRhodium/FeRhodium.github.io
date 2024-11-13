@@ -93,6 +93,11 @@ include:
 exclude:
 ignore:
 
+hide_posts:
+  fitter: hidden
+  public_generators: []
+  noindex: true
+
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
