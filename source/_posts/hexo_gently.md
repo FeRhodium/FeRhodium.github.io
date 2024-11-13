@@ -30,6 +30,7 @@ xxx/xxx.github.io
 ├── themes
 │	└── zzz(can be a submodule)
 ├── .gitmodules
+├── adddate.js
 ├── CNAME
 └── some files Hexo needed
 ```
@@ -37,6 +38,8 @@ xxx/xxx.github.io
 一些 Hexo 必须文件被省略，`CNAME` 是自定义域名，`pages.yml` 是 Workflows 配置文件。
 
 与传统配置不同，`CNAME` 须保存在根目录而非 `source` 目录下。
+
+需要通过 Git Log 提供的时间戳来修改时间。
 
 ## 一个 Workflows 示例
 
@@ -68,6 +71,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: 'recursive'
+          fetch-depth: 0
       - name: Setup Node.js
         uses: actions/setup-node@v4
       - name: Cache node_modules 
@@ -87,6 +91,7 @@ jobs:
           npm install
       - name: Convert Source to Static
         run: |
+          node adddate.js
           hexo clean
           hexo generate
           hexo deploy
@@ -105,6 +110,89 @@ jobs:
 
 **注意：** 该方法会导致你的源码数据被公开，如果不希望这样做，则可能需要新建一个私有的源码仓库，然后通过 Hexo Push 到 `xxx.github.io` 仓库，此种方式互联网上存在相关方法，这里不再赘述。
 
-## 存在的问题
+其中，`adddate.js` 一种实现如下：
 
-由于 Git 不存储文件时间戳，须显式指明文件发布时间。
+```js
+const fs = require('fs');
+const path = require('path');
+const { execSync } = require('child_process');
+
+// Function to get the creation time of a file using Git
+function getCreationTime(filePath) {
+  try {
+    const command = `git log --diff-filter=A --format="%ai" -- "${filePath}" | tail -n 1`;
+    const creationTime = execSync(command).toString().trim();
+    return creationTime.replace(/(\+\d{4}|\-\d{4})$/, '');
+  } catch (error) {
+    console.error(`Error getting creation time for ${filePath}: ${error.message}`);
+    return null;
+  }
+}
+
+// Function to get the updated time of a file using Git
+function getupdatedTime(filePath) {
+  try {
+    const command = `git log -1 --format="%ai" -- "${filePath}"`;
+    const updatedTime = execSync(command).toString().trim();
+    return updatedTime.replace(/(\+\d{4}|\-\d{4})$/, '');
+  } catch (error) {
+    console.error(`Error getting updated time for ${filePath}: ${error.message}`);
+    return null;
+  }
+}
+
+// Function to update the front matter of a Markdown file
+function updateMarkdownFile(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8');
+  
+  const creationTime = getCreationTime(filePath);
+  const updatedTime = getupdatedTime(filePath);
+
+  if (!creationTime || !updatedTime) {
+    console.error(`Skipping ${filePath} due to missing timestamps.`);
+    return;
+  }
+
+  // Check if front matter exists
+  const frontMatterRegex = /^---\n([\s\S]*?)---\n/;
+  const match = content.match(frontMatterRegex);
+  
+  let updatedContent;
+  
+  if (match) {
+    // Extract existing front matter
+    const frontMatter = match[1];
+    
+    // Update front matter
+    const newFrontMatter = `${frontMatter}date: ${creationTime}\nupdated: ${updatedTime}\n`;
+    updatedContent = content.replace(frontMatterRegex, `---\n${newFrontMatter}---\n`);
+  } else {
+    // If no front matter, create a new one
+    updatedContent = `---\ndate: ${creationTime}\nupdated: ${updatedTime}\n---\n${content}`;
+  }
+
+  // Write the updated content back to the file
+  fs.writeFileSync(filePath, updatedContent, 'utf8');
+}
+
+// Main function to process all Markdown files in the specified directory
+function processMarkdownFiles(directory) {
+  fs.readdir(directory, (err, files) => {
+    if (err) {
+      console.error(`Error reading directory: ${err}`);
+      return;
+    }
+
+    files.forEach((file) => {
+      const filePath = path.join(directory, file);
+      if (path.extname(file) === '.md') {
+        updateMarkdownFile(filePath);
+      }
+    });
+  });
+}
+
+// Specify the directory containing Markdown files
+const markdownDirectory = path.join(__dirname, 'source/_posts/');
+processMarkdownFiles(markdownDirectory);
+```
