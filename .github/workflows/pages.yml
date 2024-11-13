@@ -39,6 +39,7 @@ jobs:
             ${{ runner.os }}-
       - name: Convert Source to Static
         run: |
+          npm install -g hexo-cli --save
           npm install
           hexo clean
           hexo generate
