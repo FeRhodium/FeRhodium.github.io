@@ -102,6 +102,12 @@ hide_posts:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
+theme_config:
+  math:
+    every_page: true
+    
+    katex:
+      enable: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
