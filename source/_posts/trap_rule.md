@@ -4,6 +4,7 @@ katex: true
 ---
 
 在初等微积分教材中，谈及数值积分时应当会谈论到梯形法则的误差但不给出其证明，这里给出一种简单证明。
+<!-- more -->
 
 > **Theorem: Error Estimates in _The Trapezoidal Rule_**
 > > **The Trapezoidal Rule**

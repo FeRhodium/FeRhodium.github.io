@@ -2,7 +2,8 @@
 title: 2024 Dec Japan
 ---
 
-本文作为行程规划、、备忘、记录、费用汇总
+本文作为行程规划、备忘、记录、费用汇总
+<!-- more -->
 
 - Dec 17th
   - 10:30 Last Final Exam Ended
