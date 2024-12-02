@@ -103,9 +103,8 @@ hide_posts:
 ## Themes: https://hexo.io/themes/
 theme: next
 theme_config:
+  scheme: Mist
   math:
-    every_page: true
-    
     katex:
       enable: true
 
