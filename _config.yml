@@ -93,18 +93,6 @@ include:
 exclude:
 ignore:
 
-# config of hexo-renderer-markdown-it
-markdown:
-  render:
-    html: true
-    xhtmlOut: false
-    breaks: true
-    linkify: true
-    typographer: true
-    quotes: '“”‘’'
-  plugins:
-    - markdown-it-katex
-
 hide_posts:
   fitter: hidden
   public_generators: []
@@ -117,7 +105,7 @@ theme: next
 theme_config:
   scheme: Mist
   math:
-    katex:
+    mathjax:
       enable: true
       copy_tex: true
 
