@@ -1,3 +1,8 @@
+---
+title: 夕映えの約束
+---
+
+
 给出 The Promise at Sunset 的歌词和翻译。（Unofficial）
 
 词作权人：kotono
