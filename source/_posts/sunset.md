@@ -1,9 +1,13 @@
 ---
-title: 夕映えの約束
+title: 夕映えの約束 歌词翻译
 ---
 
 
 给出 The Promise at Sunset 的歌词和翻译。（Unofficial）
+
+出处：Blue Archive Vol 1.3
+
+<!-- more -->
 
 词作权人：kotono
 
