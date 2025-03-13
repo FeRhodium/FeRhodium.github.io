@@ -34,7 +34,7 @@ $$
 
 > 将某时间段均分为 $n$ 个单位时间段，某事件在该单位时间段发生的概率为 $p$，事件在该时间段发生次数的均值即为 $\lambda$。
 
-若 RV $X$ 表示时间段上事件发生的次数，我们称 $X$ 遵循 Possion Distrubution，记作 $X \sim \text{Poisson}(\lambda)$。其 pdf
+若 RV $X$ 表示时间段上事件发生的次数，我们称 $X$ 遵循 Possion Distrubution，记作 $X \sim \text{Poisson}(\lambda)$。其 pmf
 
 $$
 f(x) = \lim_{n \to \infty} \frac{n!}{x!(n - x)!} \left(\frac\lambda n\right)^x \left(1 - \frac\lambda n\right)^{n - x} = \frac{\lambda^x}{x!} \lim_{n \to \infty} \frac{n!}{ n^x(n - x)!} \lim_{n \to \infty} \left(1 - \frac\lambda n\right)^{n - x} = \frac{\lambda^x e^{-\lambda}}{x!}
