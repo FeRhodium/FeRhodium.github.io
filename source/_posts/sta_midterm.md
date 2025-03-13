@@ -112,4 +112,48 @@ $$
 
 ---
 
-让我们回到一切的起点，如果有一些 RV 
+让我们回到一切的起点，对于遵循二项分布 $B(n, p)$ 的随机变量 $Z$，当 $n \to \infty$，令 $X = \frac{Z - \mu}{\sigma} = \frac{Z - np}{\sqrt{np(1 - p)}}$，其 pmf
+
+$$
+P(Z = k) = \lim_{n \to \infty}\binom nk p^k(1 - p)^{n - k}
+$$
+利用斯特林公式，并取对数
+
+$$
+\ln P(Z = k)= \lim_{n\to \infty} n \ln n + k \ln p + (n - k) \ln(1 - p) - \frac 12 \ln (2\pi k(n - k)) - k \ln k - (n - k)\ln (n - k)
+$$
+
+其中 $k = np + x \sigma$，则 $\frac{x \sigma}{np} \to 0$，$\frac{x \sigma}{n(1 - p)} \to 0$ 当 $n \to \infty$，二者同在 $O(n^{-0.5})$，意味着我们只需展开到泰勒 $x^2$ 项。
+
+$$
+\begin{aligned}
+&= \lim_{n\to \infty} n \ln n + k \ln p + (n - k) \ln(1 - p) + \frac 12 n - \frac 12 \ln (2\pi k(n - k)) - k \ln np - (n - k) \ln(n(1 - p)) - \frac{kx \sigma}{np} + \frac{k x^2 \sigma^2}{2n^2p^2} + \frac{(n - k)x \sigma}{n(1 - p)} + \frac{(n - k)x^2 \sigma^2}{2n^2(1 - p)^2} \newline
+& = \lim_{n\to \infty} \frac 12 \ln n - \frac 12 \ln (2\pi (np + x\sigma)(n - np - x\sigma)) - \frac{kx(1 - p) - (n - k)xp}{\sigma} + \frac{kx^2(1 - p)^2 + (n - k)x^2 p^2}{2\sigma^2} \newline
+& = \lim_{n\to \infty} \frac 12 \ln n - \frac 12 \ln\left(2\pi n^2p(1 - p)\left(1 + \frac{x\sigma}{np}\right)\left(1 - \frac{x\sigma}{n(1 - p)}\right)\right) - x^2 + \frac{x^2}2 + o(x^3) \newline
+& = -\frac 12 \ln(2\pi np(1 - p)) - \frac{x^2}2
+\end{aligned}
+$$
+
+还原对数可得
+
+$$
+P(Z = k) = \frac{e^{-\frac{x^2}{2}}}{\sqrt{2\pi np(1 - p)}}
+$$
+
+也即导出了正态分布 $Z\sim \mathcal N(np, np(1 - p))$ 的 pdf，也即说明了 $X\sim \mathcal N(0, 1)$。
+
+更一般的，我们说 RV $X\sim \mathcal N(\mu, \sigma^2)$，是指它的 pdf
+
+$$
+f(x) = \frac {1}{\sqrt{2\pi \sigma^2}} \exp\left(-\frac{(x - \mu)^2}{\sigma^2}\right)
+$$
+
+当 $\mu = 0, \sigma^2 = 1$ 时，我们说 $X$ 遵循标准正态分布。其 cdf
+
+$$
+\Phi(x) = \int_{-\infty}^x \frac {1}{\sqrt{2\pi}}\exp\left(-\frac{x^2}{2}\right) \text{d} x
+$$
+
+更进一步的，如果 $k$ 个 RV $X_i \sim \mathcal N(0, 1)$，考虑 $Z = \sum X_i^2$。
+
+（写累了）
