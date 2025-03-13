@@ -34,10 +34,10 @@ $$
 
 > 将某时间段均分为 $n$ 个单位时间段，某事件在该单位时间段发生的概率为 $p$，事件在该时间段发生次数的均值即为 $\lambda$。
 
-若 RV $X$ 表示时间段上事件发生的次数，我们称 $X$ 遵循 Possion Distrubution，记作 $X \sim \text{Poisson}(\lambda)$。其 pmf
+若 RV $X$ 表示时间段上事件发生的次数，我们称 $X$ 遵循 Possion Distrubution，记作 $X \sim \text{Poisson}(\lambda)$。其 pdf
 
 $$
-f(x) = \lim_{n \to oo} \frac{n!}{x!(n - x)!} \left(\frac\lambda n\right)^x \left(1 - \frac\lambda n\right)^{n - x} = \frac{\lambda^x}{x!} \lim_{n \to oo} \frac{n!}{ n^x(n - x)!} \lim_{n \to oo} \left(1 - \frac\lambda n\right)^{n - x} = \frac{\lambda^x e^{-\lambda}}{x!}
+f(x) = \lim_{n \to \infty} \frac{n!}{x!(n - x)!} \left(\frac\lambda n\right)^x \left(1 - \frac\lambda n\right)^{n - x} = \frac{\lambda^x}{x!} \lim_{n \to \infty} \frac{n!}{ n^x(n - x)!} \lim_{n \to \infty} \left(1 - \frac\lambda n\right)^{n - x} = \frac{\lambda^x e^{-\lambda}}{x!}
 $$
 
 mgf
@@ -109,3 +109,7 @@ M(t) &= \Gamma^{-1}(\alpha) \theta^{-\alpha} \int_0^{\infty} e^{x(t - \theta^{-1
 $$
 
 其均值和方差 $\mu = \alpha \theta$, $\sigma^2 = \alpha \theta ^2$。不难验证 Exponential Distribution 是 $\alpha = 1$ 的 Gamma Distribution。
+
+---
+
+让我们回到一切的起点，如果有一些 RV 
