@@ -24,8 +24,9 @@ $$
 which can comfirm that
 
 $$
-M'(t) = npe^t(1 - p + pe^t)^{n - 1}, M''(t) = n(n - 1)p^2 e^{2t}(1 - p + p e^t)^{n - 2} + npe^t(1 - p + pe^t)^{n - 1} \\
-
+M'(t) = npe^t(1 - p + pe^t)^{n - 1}, M''(t) = n(n - 1)p^2 e^{2t}(1 - p + p e^t)^{n - 2} + npe^t(1 - p + pe^t)^{n - 1}
+$$
+$$
 \mu = M'(0) = np, \sigma^2 = M''(0) - M'^2(0) = np(p(n - 1)) + np - (np)^2 = np(1 - p)
 $$
 
@@ -74,7 +75,9 @@ $$
 pdf
 
 $$
-f(x) = F'(x) = \lambda e^{-\lambda x} - e^{-\lambda x}\sum_{k = 1}^{\alpha - 1}\left(\frac{k(\lambda x)^{k - 1} \lambda}{k!} - \frac{(\lambda x)^{k} \lambda}{k!}\right) = \lambda e^{-\lambda x} - e^{-\lambda x}\left(\lambda - \frac{(\lambda x)^{\alpha - 1} \lambda}{(\alpha - 1)!}\right) = e^{-\lambda x} \lambda^{\alpha} \frac{x^{\alpha - 1}}{(\alpha - 1)!}
+\begin{aligned}
+f(x) &= F'(x) = \lambda e^{-\lambda x} - e^{-\lambda x}\sum_{k = 1}^{\alpha - 1}\left(\frac{k(\lambda x)^{k - 1} \lambda}{k!} - \frac{(\lambda x)^{k} \lambda}{k!}\right) \newline &= \lambda e^{-\lambda x} - e^{-\lambda x}\left(\lambda - \frac{(\lambda x)^{\alpha - 1} \lambda}{(\alpha - 1)!}\right) = e^{-\lambda x} \lambda^{\alpha} \frac{x^{\alpha - 1}}{(\alpha - 1)!}
+\end{aligned}
 $$
 
 如果将 $\alpha$ 扩展到实数域，则要将阶乘扩展到实数域，记实数域上的函数 $\Gamma(x)$ 满足
@@ -100,7 +103,9 @@ $$
 其 mgf
 
 $$
-M(t) = \Gamma^{-1}(\alpha) \theta^{-\alpha} \int_0^{\infty} e^{x(t - \theta^{-1})} x^{\alpha - 1} \text{d} x =  \left(\theta^{-1} - t\right)^{-\alpha}\theta^{-\alpha} \Gamma^{-1}(\alpha)\int_0^{\infty} e^{-(\theta^{-1} - t)x} \left(\left(\theta^{-1} - t\right)x\right)^{\alpha - 1} \text{d} \left(\left(\theta^{-1} - t\right)x\right) = (1 - \theta t)^{-\alpha}
+\begin{aligned}
+M(t) &= \Gamma^{-1}(\alpha) \theta^{-\alpha} \int_0^{\infty} e^{x(t - \theta^{-1})} x^{\alpha - 1} \text{d} x  \newline &= \left(\theta^{-1} - t\right)^{-\alpha}\theta^{-\alpha} \Gamma^{-1}(\alpha)\int_0^{\infty} e^{-(\theta^{-1} - t)x} \left(\left(\theta^{-1} - t\right)x\right)^{\alpha - 1} \text{d} \left(\left(\theta^{-1} - t\right)x\right) \newline &= (1 - \theta t)^{-\alpha}
+\end{aligned}
 $$
 
 其均值和方差 $\mu = \alpha \theta$, $\sigma^2 = \alpha \theta ^2$。不难验证 Exponential Distribution 是 $\alpha = 1$ 的 Gamma Distribution。
