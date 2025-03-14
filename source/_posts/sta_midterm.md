@@ -142,7 +142,7 @@ $$
 f(z) = e^{-\frac z\theta} \theta^{-(\alpha_1 + \alpha_2)}z^{\alpha_1 + \alpha_2 - 1} \Gamma^{-1}(\alpha_1 + \alpha_2)
 $$
 
-也即 $X_1 + X_2 = Z \sim \Gamma(\alpha_1 + \alpha_2)$
+也即 $X_1 + X_2 = Z \sim \Gamma(\alpha_1 + \alpha_2, \theta)$
 
 ---
 
