@@ -10,11 +10,14 @@ title: 夕映えの約束 歌词翻译
 <!-- more -->
 
 词作权人：kotono
-
+<table style="margin-left: auto; margin-right: auto;">
+    <tr>
+        <td>
+            
 <ruby>涙<rt>なみだ</rt></ruby>の　<ruby>落<rt>お</rt></ruby>ちる<ruby>音<rt>おと</rt></ruby>がした<br>
 <ruby>世界<rt>せかい</rt></ruby>は<ruby>知<rt>し</rt></ruby>らない　<ruby>顔<rt>かお</rt></ruby>して<br><ruby>明日<rt>あした</rt></ruby>を<ruby>呼<rt>よ</rt></ruby>ぶ<br>
 <ruby>夢<rt>ゆめ</rt></ruby>のような　<ruby>淡<rt>あわ</rt></ruby>い<ruby>光<rt>ひかり</rt></ruby><br><br>
-<ruby>選<rt>えら</rt></ruby>んだ<ruby>道<rt>みち</rt></ruby>が<ruby>正解<rt>せいかい</rt></ruby>か　<ruby>不正解<rt>ふせいかい</rt></ruby>か　わからなくて<br>
+<ruby>選<rt>えら</rt></ruby>んだ<ruby>道<rt>みち</rt></ruby>が<ruby>正解<rt>せいかい</rt></ruby>か<ruby>不正解<rt>ふせいかい</rt></ruby>か　わからなくて<br>
 <ruby>飲<rt>の</rt></ruby>み<ruby>込<rt>こ</rt></ruby>んだ<ruby>声<rt>こえ</rt></ruby>　<ruby>縺<rt>もつ</rt></ruby>れる<br>
 <ruby>人波<rt>ひとなみ</rt></ruby>　かき<ruby>分<rt>わ</rt></ruby>け<br>
 <ruby>守<rt>まも</rt></ruby>りたい　この<ruby>場所<rt>ばしょ</rt></ruby>さえ<br>
@@ -28,7 +31,8 @@ title: 夕映えの約束 歌词翻译
 <ruby>綺麗<rt>きれい</rt></ruby>じゃなくても<br>
 <ruby>明日<rt>あした</rt></ruby>が<ruby>来<rt>く</rt></ruby>るから<br>
 そうでしょう？
-
+        </td>
+        <td>
 泪滴坠落的声音响起<br>
 世界装作视而不见<br>
 呼唤着明日<br>
@@ -47,4 +51,9 @@ title: 夕映えの約束 歌词翻译
 若你愿转身前行<br>
 只为活在当下此刻<br>
 即使不够完美无瑕<br>
-明日也终会来临，不是吗？<br>
+明日也终会来临<br>
+不是吗？<br>
+        </td>
+    </tr>
+</table>
+
