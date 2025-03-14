@@ -110,6 +110,40 @@ $$
 
 其均值和方差 $\mu = \alpha \theta$, $\sigma^2 = \alpha \theta ^2$。不难验证 Exponential Distribution 是 $\alpha = 1$ 的 Gamma Distribution。
 
+特别的，我们能够注意到，两个遵循同一发生率的 Gamma Distribution 的 RV，其代数和应当也会遵循 Gamma Distribution，其发生次数应当为二者之和，形式化的
+
+> 对于 $X_1 \sim \Gamma(\alpha_1, \theta), X_2 \sim \Gamma(\alpha_2, \theta)$，$X_1 + X_2 \sim \Gamma(\alpha_1 + \alpha_2, \theta)$
+
+这一性质一般被描述为 Gamma Distribution 的可加性，接下来来证明这一性质。
+
+令 $Z = X_1 + X_2$，其 pdf
+
+$$
+\begin{aligned}
+f(z) &= \int_{-\infty}^{\infty} f_1(x)f_2(z - x) \text d x \newline
+&= \theta^{-(\alpha_1 + \alpha_2)} \Gamma^{-1}(\alpha_1)\Gamma^{-1}(\alpha_2) e^{-\frac z\theta} \int_{0}^{z} x^{\alpha_1 - 1}(z - x)^{\alpha_2 - 1} \text d x \newline
+&=  e^{-\frac z\theta} z^{\alpha_1 + \alpha_2 - 1} \theta^{-(\alpha_1 + \alpha_2)} \color{cyan}{\Gamma^{-1}(\alpha_1)\Gamma^{-1}(\alpha_2)\int_{0}^{1} t^{\alpha_1 - 1}(1 - t)^{\alpha_2 - 1} \text d t}
+\end{aligned}
+$$
+
+第三个等号换元 $t = \frac xz$，将 Cyan 色部分设为 $A$，则有
+
+$$
+\begin{aligned}
+1 &= \int_0^{\infty} A \theta^{-(\alpha_1 + \alpha_2)} e^{-\frac z\theta} z^{\alpha_1 + \alpha_2 - 1} \text d z \newline
+&= A \int_0^{\infty} e^{-\frac z\theta} \left(\frac z\theta\right)^{\alpha_1 + \alpha_2 - 1} \text d \frac z\theta \newline
+&= A\Gamma(\alpha_1 + \alpha_2) \implies A = \Gamma^{-1}(\alpha_1 + \alpha_2)
+\end{aligned}
+$$
+
+代回原式
+
+$$
+f(z) = e^{-\frac z\theta} \theta^{-(\alpha_1 + \alpha_2)}z^{\alpha_1 + \alpha_2 - 1} \Gamma^{-1}(\alpha_1 + \alpha_2)
+$$
+
+也即 $X_1 + X_2 = Z \sim \Gamma(\alpha_1 + \alpha_2)$
+
 ---
 
 让我们回到一切的起点，对于遵循二项分布 $B(n, p)$ 的随机变量 $Z$，当 $n \to \infty$，令 $X = \frac{Z - \mu}{\sigma} = \frac{Z - np}{\sqrt{np(1 - p)}}$，其 pmf
@@ -156,4 +190,12 @@ $$
 
 更进一步的，如果 $k$ 个 RV $X_i \sim \mathcal N(0, 1)$，考虑 $Z = \sum X_i^2$。
 
-（写累了）
+ 先考虑 $k = 1$ 的情况，也即
+
+ $$
+ f(z) = \frac{\text{d}}{\text{d} z}P(|X| \le \sqrt z) = \frac{\text{d} \sqrt{z}}{\text{d} z} \frac{\text d}{\text d \sqrt z}\int_{-\sqrt z}^{\sqrt z} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}2} \text d x = \frac{1}{2\sqrt z} \times \frac{2}{\sqrt{2\pi}} e^{-\frac z2} = \frac{(\frac 12)^{\frac 12}}{\Gamma(\frac 12)} z^{\frac 12 - 1} e^{-\frac z2}
+ $$
+
+所以说 $z$ 遵循 $\theta = 2, \alpha = \frac 12$ 的 Gamma Distribution。而根据 Gamma Distribution 的可加性，不难得出 $Z \sim \Gamma(2, \frac k2)$。我们将这样的 RV 称作其遵循 Chi-Square Distribution，记作 $Z \sim \chi^2(k)$，其中 $k$ 为参数，被称作自由度。
+
+以上。
