@@ -84,6 +84,8 @@ f(x) &= F'(x) = \lambda e^{-\lambda x} - e^{-\lambda x}\sum_{k = 1}^{\alpha - 1}
 \end{aligned}
 $$
 
+这样的 RV 被称为遵循 Erlang Distribution，要求 $\alpha$ 为正整数，其 cdf 由上文给出。
+
 如果将 $\alpha$ 扩展到实数域，则要将阶乘扩展到实数域，记实数域上的函数 $\Gamma(x)$ 满足
 
 $$
