@@ -24,10 +24,10 @@ $$
 which can comfirm that
 
 $$
-M'(t) = npe^t(1 - p + pe^t)^{n - 1}, M''(t) = n(n - 1)p^2 e^{2t}(1 - p + p e^t)^{n - 2} + npe^t(1 - p + pe^t)^{n - 1}
+M'(t) = npe^t(1 - p + pe^t)^{n - 1},\newline M''(t) = n(n - 1)p^2 e^{2t}(1 - p + p e^t)^{n - 2} + npe^t(1 - p + pe^t)^{n - 1}
 $$
 $$
-\mu = M'(0) = np, \sigma^2 = M''(0) - M'^2(0) = np(p(n - 1)) + np - (np)^2 = np(1 - p)
+\mu = M'(0) = np, \newline\sigma^2 = M''(0) - M'^2(0) = np(p(n - 1)) + np - (np)^2 = np(1 - p)
 $$
 
 当 $n \to \infty, p \to 0$, 记 $\lambda = np$ 即均值，可被描述为
@@ -37,13 +37,17 @@ $$
 若 RV $X$ 表示时间段上事件发生的次数，我们称 $X$ 遵循 Possion Distrubution，记作 $X \sim \text{Poisson}(\lambda)$。其 pmf
 
 $$
-f(x) = \lim_{n \to \infty} \frac{n!}{x!(n - x)!} \left(\frac\lambda n\right)^x \left(1 - \frac\lambda n\right)^{n - x} = \frac{\lambda^x}{x!} \lim_{n \to \infty} \frac{n!}{ n^x(n - x)!} \lim_{n \to \infty} \left(1 - \frac\lambda n\right)^{n - x} = \frac{\lambda^x e^{-\lambda}}{x!}
+\begin{aligned}
+f(x) &= \lim_{n \to \infty} \frac{n!}{x!(n - x)!} \left(\frac\lambda n\right)^x \left(1 - \frac\lambda n\right)^{n - x} \newline &= \frac{\lambda^x}{x!} \lim_{n \to \infty} \frac{n!}{ n^x(n - x)!} \lim_{n \to \infty} \left(1 - \frac\lambda n\right)^{n - x} \newline &= \frac{\lambda^x e^{-\lambda}}{x!}
+\end{aligned}
 $$
 
 mgf
 
 $$
-M(t) = \sum_{x \ge 0} e^{tx}\frac{\lambda^x e^{-\lambda}}{x!} =  e^{-\lambda}\sum_{x \ge 0} \frac{\left(\lambda e^t\right)^x}{x!} = e^{\lambda\left(e^t - 1\right)}
+\begin{aligned}
+M(t) &= \sum_{x \ge 0} e^{tx}\frac{\lambda^x e^{-\lambda}}{x!} \newline &=  e^{-\lambda}\sum_{x \ge 0} \frac{\left(\lambda e^t\right)^x}{x!} \newline &= e^{\lambda\left(e^t - 1\right)}
+\end{aligned}
 $$
 
 均值和方差均为 $\lambda$ obviously。
@@ -193,7 +197,9 @@ $$
  先考虑 $k = 1$ 的情况，也即
 
  $$
- f(z) = \frac{\text{d}}{\text{d} z}P(|X| \le \sqrt z) = \frac{\text{d} \sqrt{z}}{\text{d} z} \frac{\text d}{\text d \sqrt z}\int_{-\sqrt z}^{\sqrt z} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}2} \text d x = \frac{1}{2\sqrt z} \times \frac{2}{\sqrt{2\pi}} e^{-\frac z2} = \frac{(\frac 12)^{\frac 12}}{\Gamma(\frac 12)} z^{\frac 12 - 1} e^{-\frac z2}
+ \begin{aligned}
+ f(z) &= \frac{\text{d}}{\text{d} z}P(|X| \le \sqrt z) \newline &= \frac{\text{d} \sqrt{z}}{\text{d} z} \frac{\text d}{\text d \sqrt z}\int_{-\sqrt z}^{\sqrt z} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}2} \text d x \newline &= \frac{1}{2\sqrt z} \times \frac{2}{\sqrt{2\pi}} e^{-\frac z2} = \frac{(\frac 12)^{\frac 12}}{\Gamma(\frac 12)} z^{\frac 12 - 1} e^{-\frac z2}
+ \end{aligned}
  $$
 
 所以说 $z$ 遵循 $\theta = 2, \alpha = \frac 12$ 的 Gamma Distribution。而根据 Gamma Distribution 的可加性，不难得出 $Z \sim \Gamma(2, \frac k2)$。我们将这样的 RV 称作其遵循 Chi-Square Distribution，记作 $Z \sim \chi^2(k)$，其中 $k$ 为参数，被称作自由度。
