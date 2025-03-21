@@ -108,6 +108,14 @@ theme_config:
     mathjax:
       enable: true
       copy_tex: true
+  follow_me:
+    RSS: /rss.xml || fa fa-rss
+
+# RSS
+feed:
+  type: rss
+  path: rss.xml
+  limit: 20
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
