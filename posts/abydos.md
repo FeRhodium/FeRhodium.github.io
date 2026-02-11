@@ -1,7 +1,10 @@
 ---
 title: 理所当然的青春故事
+summary: "Blue Archive~"
 created: "2025-03-12T02:19:33+08:00"
 updated: "2025-03-21T19:53:30+08:00"
+tags:
+  - comments
 ---
 
 > 于无心的日常中，发现少许奇迹的故事。

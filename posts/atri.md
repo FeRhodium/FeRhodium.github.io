@@ -1,7 +1,10 @@
 ---
-title: あのひかり
+title: あの光
+summary: "ATRI: My Dear Moments"
 created: "2025-05-11T23:05:18+08:00"
 updated: "2025-05-11T23:05:18+08:00"
+tags:
+  - comments
 ---
 
 ATRI 寿命的设定让我想起 "Bicentennial Man"(1999) 中的情节，Andrew 为了“获得人类认证”而自愿选择放弃无尽的生命，在不断用生物组织替代机械结构之后，Andrew 或许真正地成为了人类。

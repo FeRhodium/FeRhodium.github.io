@@ -6,10 +6,6 @@ tags:
   - about
 ---
 
-# About Me
+Fe Here.
 
-Hi, I am Feechen.
-
-我喜欢写技术文章和旅行记录。
-
-私は技術と旅のメモを書くのが好きです。
+Hope you have fun:)

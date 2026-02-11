@@ -1,8 +1,10 @@
 ---
 title: 二项分布及其简单扩展
-mathjax: true
+summary: "Statistics Knowledge"
 created: "2025-03-13T16:49:59+08:00"
 updated: "2025-03-16T16:29:59+08:00"
+tags:
+  - easy
 ---
 
 我们说一个 RV $X$ 遵循二项分布是指

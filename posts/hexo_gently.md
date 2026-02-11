@@ -1,7 +1,10 @@
 ---
 title: 如何优雅地使用 Hexo
+summary: "Sucks Hexo"
 created: "2024-11-13T11:18:23+08:00"
 updated: "2024-11-13T14:51:26+08:00"
+tags:
+  - workflow
 ---
 
 本人由于多次丢失 Hexo Blog 源码而不得不重新部署且导致数据丢失，故而找到一种直接 Git 维护源码 + Github Actions 工作流部署静态网页的方法，且只需占用单一仓库的单一分支。

@@ -1,7 +1,10 @@
 ---
 title: A Newer Blog
+summary: "Welcome!"
 created: "2024-11-12T23:06:19+08:00"
 updated: "2024-11-13T13:59:41+08:00"
+tags:
+  - welcome
 ---
 这是一个新的博客，取代了[这个](https://old.ferh.me)，其中写于 2022-2024 的文章【数据丢失】喵。
 
