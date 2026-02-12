@@ -39,12 +39,23 @@ type ElementNode = {
   children?: unknown[];
 };
 
-type TravelDateInput =
+type DateRangeInput =
   | {
       start?: string;
       end?: string;
     }
   | string;
+
+type EventFrontmatter = {
+  name?: string;
+  eventName?: string;
+  type?: string;
+  eventType?: string;
+  location?: string[] | string;
+  eventLocation?: string[] | string;
+  date?: DateRangeInput;
+  eventDate?: DateRangeInput;
+};
 
 type Frontmatter = {
   title?: string;
@@ -52,7 +63,12 @@ type Frontmatter = {
   tags?: string[] | string;
   about?: boolean;
   location?: string[] | string;
-  travelDate?: TravelDateInput;
+  travelDate?: DateRangeInput;
+  events?: EventFrontmatter[] | EventFrontmatter;
+  eventName?: string;
+  eventType?: string;
+  eventLocation?: string[] | string;
+  eventDate?: DateRangeInput;
   created?: string | Date;
   updated?: string | Date;
   createdAt?: string | Date;
@@ -68,7 +84,27 @@ export type PostMeta = {
   location: string[];
   travelStart?: string;
   travelEnd?: string;
+  events: EventMeta[];
   createdAt: string;
+  updatedAt: string;
+};
+
+export type EventMeta = {
+  name: string;
+  type: string;
+  location: string[];
+  start?: string;
+  end?: string;
+};
+
+export type EventPostMeta = {
+  slug: string;
+  title: string;
+  eventName: string;
+  eventType: string;
+  eventLocation: string[];
+  eventStart?: string;
+  eventEnd?: string;
   updatedAt: string;
 };
 
@@ -110,16 +146,16 @@ function normalizeArray(value: string[] | string | undefined): string[] {
     .filter(Boolean);
 }
 
-function normalizeTravelDate(travelDate: TravelDateInput | undefined): {
+function normalizeDateRange(input: DateRangeInput | undefined): {
   start?: string;
   end?: string;
 } {
-  if (!travelDate) {
+  if (!input) {
     return {};
   }
 
-  if (typeof travelDate === "string") {
-    const [start, end] = travelDate
+  if (typeof input === "string") {
+    const [start, end] = input
       .split(/\s*(?:~|to|\/)\s*/i)
       .map((entry) => entry.trim())
       .filter(Boolean);
@@ -128,8 +164,8 @@ function normalizeTravelDate(travelDate: TravelDateInput | undefined): {
   }
 
   return {
-    start: travelDate.start,
-    end: travelDate.end,
+    start: input.start,
+    end: input.end,
   };
 }
 
@@ -205,6 +241,46 @@ function toClassList(className: unknown): string[] {
   }
 
   return [];
+}
+
+function normalizeSingleEvent(input: EventFrontmatter): EventMeta {
+  const range = normalizeDateRange(input.eventDate ?? input.date);
+  return {
+    name: (input.eventName ?? input.name ?? "").trim(),
+    type: (input.eventType ?? input.type ?? "").trim(),
+    location: normalizeArray(input.eventLocation ?? input.location),
+    start: range.start,
+    end: range.end,
+  };
+}
+
+function hasEventContent(event: EventMeta): boolean {
+  return (
+    event.name.length > 0 ||
+    event.type.length > 0 ||
+    event.location.length > 0 ||
+    Boolean(event.start) ||
+    Boolean(event.end)
+  );
+}
+
+function normalizeEvents(frontmatter: Frontmatter): EventMeta[] {
+  const rawEvents = frontmatter.events;
+  const eventList = Array.isArray(rawEvents) ? rawEvents : rawEvents ? [rawEvents] : [];
+  const normalizedList = eventList.map(normalizeSingleEvent).filter(hasEventContent);
+
+  if (normalizedList.length > 0) {
+    return normalizedList;
+  }
+
+  const legacyEvent = normalizeSingleEvent({
+    eventName: frontmatter.eventName,
+    eventType: frontmatter.eventType,
+    eventLocation: frontmatter.eventLocation,
+    eventDate: frontmatter.eventDate,
+  });
+
+  return hasEventContent(legacyEvent) ? [legacyEvent] : [];
 }
 
 function remarkCalloutDirective() {
@@ -322,7 +398,8 @@ function parsePostFile(fileName: string): {
   const slug = slugFromFileName(fileName);
   const tags = normalizeArray(frontmatter.tags);
   const location = normalizeArray(frontmatter.location);
-  const travelDate = normalizeTravelDate(frontmatter.travelDate);
+  const travelDate = normalizeDateRange(frontmatter.travelDate);
+  const events = normalizeEvents(frontmatter);
   const configuredCreatedAt = normalizeFrontmatterTimestamp(frontmatter.createdAt ?? frontmatter.created);
   const configuredUpdatedAt = normalizeFrontmatterTimestamp(frontmatter.updatedAt ?? frontmatter.updated);
   const gitTimestamps =
@@ -341,6 +418,7 @@ function parsePostFile(fileName: string): {
       location,
       travelStart: travelDate.start,
       travelEnd: travelDate.end,
+      events,
       createdAt: createdAt ?? "",
       updatedAt: updatedAt ?? "",
     },
@@ -363,6 +441,27 @@ export function getTravelPosts(): PostMeta[] {
     .sort((a, b) => {
       const leftDate = a.travelStart ?? a.updatedAt;
       const rightDate = b.travelStart ?? b.updatedAt;
+      return toTimeValue(rightDate) - toTimeValue(leftDate);
+    });
+}
+
+export function getEventPosts(): EventPostMeta[] {
+  return getAllPosts()
+    .flatMap((post) => {
+      return post.events.map((event) => ({
+        slug: post.slug,
+        title: post.title,
+        eventName: event.name,
+        eventType: event.type,
+        eventLocation: event.location,
+        eventStart: event.start,
+        eventEnd: event.end,
+        updatedAt: post.updatedAt,
+      }));
+    })
+    .sort((a, b) => {
+      const leftDate = a.eventStart ?? a.updatedAt;
+      const rightDate = b.eventStart ?? b.updatedAt;
       return toTimeValue(rightDate) - toTimeValue(leftDate);
     });
 }

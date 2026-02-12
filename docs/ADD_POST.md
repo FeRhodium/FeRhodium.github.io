@@ -69,7 +69,44 @@ Travel table columns are read as:
 - `Location`: `location` list
 - `Date`: `travelDate.start ~ travelDate.end`
 
-## 4. About Me content
+## 4. Event post format (for the Event tab)
+
+If a post should appear in **Event**, include the `event` tag and add an `events` list.
+Travel fields (`location`, `travelDate`) are not used by the Event tab.
+
+```md
+---
+title: "Weekend in the City"
+summary: "Concert and exhibition notes"
+tags:
+  - event
+events:
+  - name: "Coldplay Live 2026"
+    type: "concert"
+    location:
+      - Hong Kong Coliseum
+    date:
+      start: "2026-05-03"
+      end: "2026-05-03"
+  - name: "Art Basel Hong Kong"
+    type: "exhibition"
+    location:
+      - Hong Kong Convention and Exhibition Centre
+    date:
+      start: "2026-05-04"
+      end: "2026-05-05"
+---
+```
+
+Each event in `events` becomes one row in the Event table:
+
+- `Post Title`: `title`
+- `Event Name`: `events[].name`
+- `Event Type`: `events[].type` (for example `concert`, `exhibition`, `festival`)
+- `Location`: `events[].location` list
+- `Date`: `events[].date.start ~ events[].date.end`
+
+## 5. About Me content
 
 Create (or edit) this file:
 
@@ -81,7 +118,7 @@ Set this in frontmatter so it is used by the **About Me** tab:
 about: true
 ```
 
-## 5. Created/Updated time behavior
+## 6. Created/Updated time behavior
 
 By default, created time and updated time are taken from **git commit timestamps** for each markdown file.
 
@@ -97,7 +134,7 @@ updated: "2026-02-11T20:15:00+08:00"
 ---
 ```
 
-## 6. Deploy to GitHub Pages
+## 7. Deploy to GitHub Pages
 
 The workflow file is:
 

@@ -8,12 +8,17 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 const tabs = [
   { label: "Post", href: "/", value: "/" },
   { label: "Travel", href: "/travel", value: "/travel" },
+  { label: "Event", href: "/event", value: "/event" },
   { label: "About Me", href: "/about", value: "/about" },
 ] as const;
 
 function getActiveTab(pathname: string): string {
   if (pathname.startsWith("/travel")) {
     return "/travel";
+  }
+
+  if (pathname.startsWith("/event")) {
+    return "/event";
   }
 
   if (pathname.startsWith("/about")) {
