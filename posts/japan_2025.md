@@ -11,7 +11,6 @@ location:
   - Shirahama
   - Takamatsu
   - Nara
-  - Shanghai
 events:
   - name: "Roselia 「Sei Stark」"
     type: "concert"
