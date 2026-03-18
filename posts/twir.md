@@ -38,7 +38,7 @@ $$
 
 当量子门的噪声在 Pauli 基上相干时，噪声的累积使电路最终的噪声难以分析；Pauli Twirling 则提出了一个方法，使相干的噪声尽量趋于形似随机翻转、随机相位的噪声。形式化的，
 
-:::note{title="Pauli Transfer Matrix"}
+:::note{title="Pauli Transfer Matrix(PTM)"}
 
 **定义**
 
@@ -79,4 +79,57 @@ $$
 }
 $$
 
-通过 $R_\Lambda$，我们可以定量分析噪声引入对 Pauli 基的相干程度。
+通过 $R_\Lambda$，我们可以定量分析噪声引入对 Pauli 基相干程度的影响。
+
+具体来说，噪声通道 PTM 的对角项反映了噪声对某个 Pauli 基的影响，非对角项反映了噪声引入后导致的 Pauli 基相互影响；Pauli Twirling 则通过在高噪声量子门前后添加纯 Pauli 门使噪声通道 PTM 只保留对角项。形式上的，令理想量子电路为 $\mathcal U$，实际硬件上电路后存在噪声通道 $\Lambda$，对实际电路 Twirling 即为
+
+$$
+\mathcal U_{T} = \mathcal C_{T^c} \circ \Lambda \circ \mathcal U \circ \mathcal C_{T} \text{ where } \mathcal C_Q(\rho) = Q\rho Q
+$$
+
+其中 $T \in \mathcal P_n$，根据 Clifford 的门的定义，$T^c \in \mathcal P_n$ 满足
+
+$$
+U T = T^c U \implies T^c = U T U^\dagger
+$$
+
+从而有
+
+$$
+U \circ \mathcal C_T = \mathcal C_{T^c} \circ U
+$$
+
+因此
+
+$$
+\boxed{
+\mathcal U_T = \mathcal C_{T^c} \circ \Lambda \circ \mathcal C_{T^c} \circ \mathcal U
+}
+$$
+
+这意味着，我们在实际电路前后添加 Pauli 门不会改变电路的逻辑，只会对噪声通道产生影响。形式化的，对于 Pauli 基上的任一算符 $P_j$，Twirling 后的通道取每一个 Pauli 基的算数平均，也即
+
+$$
+\begin{aligned}
+\mathcal T (\Lambda)(P_j) &= \frac{1}{4^n} \sum_{Q} Q\Lambda(QP_j Q) Q = \frac{1}{4^n} \sum_{Q} Q \sum_i s_{Qj} (R_\Lambda)_{ij} P_i Q \\ &= \frac{1}{4^n} \sum_Q \sum_i s_{Qi}s_{Qj} (R_\Lambda)_{ij} P_i = \frac{1}{4^n} \sum_i (R_\Lambda)_{ij} P_i \sum_Q s_{Qi}s_{Qj} 
+\end{aligned}
+$$
+
+其中 $s_{Qi} = \pm 1$ 满足
+
+$$
+Q P_i Q = s_{Qi} P_i, \frac{1}{4^n}\sum_Q s_{Qi}s_{Qj} = \delta_{ij}
+$$
+
+证明是平凡的。
+
+因此，
+
+$$
+\boxed{
+\mathcal T (\Lambda)(P_i) = (R_{\Lambda}) P_i \implies R_{\mathcal T(\Lambda)} = \text{diag}(R_{11}, R_{22}, \cdots)
+}
+$$
+
+所以，在 Twirling 后，噪声不会导致 Pauli 基之间的误差累积，而仅作用于某一 Pauli 基上。
+
